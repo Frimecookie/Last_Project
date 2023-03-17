@@ -26,11 +26,10 @@ public class LoginController {
 		String userId = req.getParameter("userId");
 		String userPw = req.getParameter("userPw");
 		String referer = req.getParameter("referer");
-		String pageNm = StringUtil.getBeforePage(referer);
-		pageNm = "loginPage.do".equals(pageNm) ? "home.do" : pageNm;
+
 		boolean isSuccess = service.getLoginSession(userId, userPw, session);
 		if(isSuccess) {
-			return "redirect:/" + pageNm;
+			return "redirect:/home";
 		} else {
 			ScriptUtil.alert(res, "아이디 혹은 비밀번호가 틀렸습니다.\\n다시 시도하여 주십시오.");
 			return "redirect:/loginPage.do";

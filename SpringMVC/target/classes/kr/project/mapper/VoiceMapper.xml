@@ -3,13 +3,13 @@
 <mapper namespace="kr.project.mapper.VoiceMapper">
   
   <!-- 음성 등록 -->
-  <insert id="insertVoiceFile" parameterType="kr.project.entity.Voice">
-    INSERT INTO voice_files (VOICE-NUM, USER_ID, FILE_PATH)
-    VALUES (#{USER_ID}, #{filePath})
+  <insert id="insertVoiceFile" parameterType="kr.project.entity.Voices">
+    INSERT INTO voices (USER_ID, FILE_PATH)
+    VALUES (#{USER_ID, jdbcType=VARCHAR}, #{filePath, jdbcType=VARCHAR})
   </insert>
   
   <!-- 음성 목록 -->
-  <select id="voiceList" parameterType="java.lang.String" resultType="kr.project.entity.voice">
+  <select id="voiceList" parameterType="java.lang.String" resultType="kr.project.entity.Voices">
 		select * 
 		from voices 
 		where USER_ID = #{USER_ID}

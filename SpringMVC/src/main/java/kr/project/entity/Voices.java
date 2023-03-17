@@ -6,7 +6,7 @@ import oracle.sql.TIMESTAMP;
 
 @Data
 @ToString
-public class Voice {
+public class Voices {
 	private String USER_ID;
 	private Integer VOICE_NUM;
     private String filePath;

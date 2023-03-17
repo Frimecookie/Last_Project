@@ -133,24 +133,16 @@
 											
 										<form id = "voiceForm" action="${cpath}/myPage_voice.do" method="POST">
 											<table>
-												<c:forEach acr = "voice" items="${voicelist}">
+											<c:forEach var="pet" items="${voicelist}">
 												<tr>
-													<td style="font-size: 20px;"><b>파일명</b></td>
-													<td style="font-size: 20px;">voice01.mp3</td>
-													<td><audio controls="controls"><source src="" type="audio/mp3" /></audio></td>
-													<td><input type="button" value="삭제하기" style="padding: 10px 30px;"></td>
-												</tr>
-												<tr>
-													<td style="font-size: 20px;"><b>파일명</b></td>
-													<td style="font-size: 20px;">voice02.mp3</td>
-													<td><audio controls="controls"><source src="" type="audio/mp3" /></audio></td>
-													<td><input type="button" value="삭제하기" style="padding: 10px 30px;"></td>
+													<td style="font-size: 20px;"><b>${voice.VOICE_NUM}</b></td>
+													<td style="font-size: 20px;">${voice.FILE_PATH}</td>
 												</tr>
 											</c:forEach>
 											</table>
 										</form>
 
-											<form action="/myPage_voice.do" method="post" enctype="multipart/form-data">
+											<form action="${cpath}/voiceselect.do" method="post" enctype="multipart/form-data">
 												<input type="file" name="file" id="file" style="display:none"/>
 												<input type="submit" onclick="onclick=document.all.file.click()" value = "음성파일 추가 ">
 											</form>
