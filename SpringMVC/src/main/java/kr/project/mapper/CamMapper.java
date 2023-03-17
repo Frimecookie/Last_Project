@@ -4,12 +4,16 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.project.entity.Cams;
 import kr.project.entity.Pets;
+import kr.project.entity.Records;
 
-public interface ChartMapper {
+public interface CamMapper {
 
-	/* 동물 목록*/
+	/*위험물체 카운트 */
 	public List<Records> recordsList(@Param("CAMS_NUM") int CAMS_NUM);
 	
-	public void register(Pets vo);
+	public void register(Records vo);
+
+	public void cams(String userId);
 }

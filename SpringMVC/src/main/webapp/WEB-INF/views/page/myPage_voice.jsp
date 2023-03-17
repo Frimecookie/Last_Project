@@ -131,8 +131,9 @@
 												<h3>위험 상황시 반려동물에게 들려줄 음성 파일을 등록해주세요</h3>
 											</section>
 											
-										<form>
+										<form id = "voiceForm" action="${cpath}/myPage_voice.do" method="POST">
 											<table>
+												<c:forEach acr = "voice" items="${voicelist}">
 												<tr>
 													<td style="font-size: 20px;"><b>파일명</b></td>
 													<td style="font-size: 20px;">voice01.mp3</td>
@@ -145,12 +146,13 @@
 													<td><audio controls="controls"><source src="" type="audio/mp3" /></audio></td>
 													<td><input type="button" value="삭제하기" style="padding: 10px 30px;"></td>
 												</tr>
+											</c:forEach>
 											</table>
 										</form>
 
-											<form action="upload" id="uploadForm" method="post" enctype="multipart/form-data">
+											<form action="/myPage_voice.do" method="post" enctype="multipart/form-data">
 												<input type="file" name="file" id="file" style="display:none"/>
-												<div class="button" onclick="onclick=document.all.file.click()">음성 파일 추가</div>
+												<input type="submit" onclick="onclick=document.all.file.click()" value = "음성파일 추가 ">
 											</form>
 											
 											
