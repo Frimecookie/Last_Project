@@ -142,17 +142,11 @@
 											</table>
 										</form>
 
-											<form action="${cpath}/voiceselect.do" method="post" enctype="multipart/form-data">
-												<input type="file" name="file" id="file" style="display:none"/>
-												<input type="submit" onclick="onclick=document.all.file.click()" value = "음성파일 추가 ">
+											<form action="${cpath}/upload" modelAttribute="uploadFile" method="post" enctype="multipart/form-data">
+												<input type="file" name="file"/>
+												<input type="submit" value = "음성파일 추가 ">
 											</form>
-											
-											
-											
 										</article>
-											
-
-
 								</div>
 							</div>
 						</div>
