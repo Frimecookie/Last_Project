@@ -15,7 +15,7 @@ public class VoiceService {
     private VoiceMapper mapper;
 
     public void insertVoiceData(HttpServletRequest req, String userId, Voices vo) {
-    		vo.setUSER_ID(userId);
+    		vo.setUser_id(userId);
     		System.out.println(vo);
     		mapper.insertVoiceFile(vo);
     }

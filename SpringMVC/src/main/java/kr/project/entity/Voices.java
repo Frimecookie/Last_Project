@@ -5,11 +5,10 @@ import lombok.ToString;
 import oracle.sql.TIMESTAMP;
 
 @Data
-@ToString
 public class Voices {
-	private String USER_ID;
-	private Integer VOICE_NUM;
-    private String filePath;
+	private String user_id;
+	private Integer voice_num;
+    private String file_Path;
     private TIMESTAMP createdAt;
 	// 생성자, getter, setter 생략
 	

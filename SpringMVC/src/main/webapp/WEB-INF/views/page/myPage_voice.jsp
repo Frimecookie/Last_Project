@@ -133,10 +133,10 @@
 											
 										<form id = "voiceForm" action="${cpath}/myPage_voice.do" method="POST">
 											<table>
-											<c:forEach var="pet" items="${voicelist}">
+											<c:forEach var="voice" items="${voiceList}">
 												<tr>
-													<td style="font-size: 20px;"><b>${voice.VOICE_NUM}</b></td>
-													<td style="font-size: 20px;">${voice.FILE_PATH}</td>
+													<td style="font-size: 20px;">${voice.voice_num}</td>
+													<td style="font-size: 20px;">${voice.file_Path}</td>
 												</tr>
 											</c:forEach>
 											</table>
