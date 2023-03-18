@@ -7,7 +7,7 @@ import kr.project.entity.Voices;
 
 public interface VoiceMapper {
 
-	public List<Voices> voiceList(@Param("USER_ID") String userId);
+	public List<Voices> voiceList(@Param("U_ID") String u_Id);
 	
-	public void insertVoiceFile(Voices vo);
+	public void save(Voices audioFile);
 }

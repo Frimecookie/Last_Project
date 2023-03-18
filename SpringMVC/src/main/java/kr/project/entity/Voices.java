@@ -6,7 +6,7 @@ import oracle.sql.TIMESTAMP;
 
 @Data
 public class Voices {
-	private String user_id;
+	private String u_id;
 	private Integer voice_num;
     private String file_Path;
     private TIMESTAMP createdAt;
