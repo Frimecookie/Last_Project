@@ -13,7 +13,7 @@
 		order by QUESTIONS_NUM DESC
 	</select>
 	
-	<!-- 문의사항 등록 -->
+	<!-- 캠 가져오기 -->
 	<select id="cams" parameterType="java.lang.String" resultType="kr.project.entity.Cams">
 		select *
 		from CAMS

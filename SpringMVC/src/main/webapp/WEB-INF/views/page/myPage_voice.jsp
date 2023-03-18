@@ -130,6 +130,7 @@ table tr, th, td {
 
 								<header>
 									<h2>음성 정보</h2>
+
 								</header>
 
 								<section>
@@ -139,23 +140,26 @@ table tr, th, td {
 									<a href="loginPage.do">Login</a>
 								</c:if>
 								<c:if test="${!empty mvo}">
-								<form id="voiceForm" action="${cpath}/myPage_voice.do"
-									method="POST">
-									<table>
-										<c:forEach var="voice" items="${voiceList}">
-											<tr>
-												<td style="font-size: 20px;">${voice.voice_num}</td>
-												<td style="font-size: 20px;">${voice.file_Path}</td>
-											</tr>
-										</c:forEach>
-									</table>
-								</form>
+									<form id="voiceForm" action="${cpath}/myPage_voice.do"
+										method="POST">
+										<table>
+											<c:forEach var="voice" items="${voiceList}">
+												<tr>
+													<td style="font-size: 20px;">${voice.VOICE_NUM}</td>
+													<td><audio controls>
+															<source src="${voice.FILE_PATH}" type="audio/mpeg">
+														</audio></td>
+													<td><button onclick = "location.href='${cpath}voicedelete.do?VOICE_NUM=${voice.VOICE_NUM}"">삭제하기</button></td>
+												</tr>
+											</c:forEach>
+										</table>
+									</form>
 
-								<form action="/uploadFile" method="post" enctype="multipart/form-data">
-									<input type="file" name="file" /> 
-									<input type="submit"
-										value="음성파일 추가 ">
-								</form>
+									<form action="${cpath}/uploadFile.do" method="post"
+										enctype="multipart/form-data">
+										<input type="file" name="file" id="file" /> <input
+											type="submit" value="음성파일 추가 ">
+									</form>
 								</c:if>
 							</article>
 						</div>
