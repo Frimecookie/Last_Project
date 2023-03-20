@@ -99,13 +99,10 @@
 													</li>
 												</ul>
 											</section>
-								
-
 								</div>
 							</div>
 							<div class="col-9 col-12-medium imp-medium">
 								<div class="content">
-
 									<!-- Content -->
 									<form action="/petPage_regi.do" method="post">
 										<article class="box page-content" style="height: 500px;">
@@ -120,19 +117,21 @@
 											<input type="radio" id="petCate" name="PET_CATE" value="0">강아지
 											<input type="radio" id="petCate" name="PET_CATE" value="1">고양이
 											<h3><label for="PET_GENDER">반려동물 성별</label></h3>
-											<input type="radio" id="petGender" name="PET_GENDER" value="0">암컷	
-											<input type="radio" id="petGender" name="PET_GENDER" value="1">수컷
+											<input type="radio" id="petGender" name="PET_GENDER" value="0">수컷	
+											<input type="radio" id="petGender" name="PET_GENDER" value="1">암컷
 										</article>
 										<article class="box page-content" style="height: 500px;">
-											<form method="post" enctype="multipart/form-data">
-												<span class="image featured"><img src="/resources/images/dog01.jpg" style="width: 300px; height: 300px; border-radius: 100%; margin-left: 175px; margin-top: 30px;"></span>
-												<div class="filebox">
-													<input class="upload-name" id="imgFileNm" placeholder="사진파일" disabled>
-													<label for="petImg">파일찾기</label>
-													<input type="file" id="petImg" name="PET_PICTURE" accept="image/*">
-													<input type="submit" style="margin-top: 20px; position: relative; left: 250px;" value="등록하기">
-												</div>
-											</form>	
+											<span class="image featured" id="tempUploadImgWrap">
+												<img class="temp-upload-img" src="/resources/images/dog01.jpg">
+											</span>
+											<input type="hidden" id="internalImgPath" name="INTERNAL_IMGPATH">
+											<input type="hidden" id="externalImgPath" name="PET_PICTURE">
+											<div class="filebox">
+												<input class="upload-name" id="imgFileNm" placeholder="사진파일" disabled>
+												<label for="petImg">파일찾기</label>
+												<input type="file" id="petImg" name="PET_IMG" accept="image/*">
+												<button style="margin-top: 20px; position: relative; left: 250px;">등록하기</button>
+											</div>
 										</article>
 									</form>	
 								</div>
@@ -203,9 +202,32 @@
 	</body>
 	<script>
 		$('#petImg').change(function() {
-			var fileNm = $('#petImg')[0].files[0].name;
-			console.log(fileNm)
+			let formData = new FormData();
+			let inputFiles = $("input[name='PET_IMG']")[0].files;
+			const fileNm = inputFiles[0].name;
 			$('#imgFileNm').val(fileNm);
+			
+			for(var i = 0; i < inputFiles.length; i++) {
+				formData.append('PET_IMG', inputFiles[i]);
+			}
+
+			$.ajax({
+				url : "/file/uploadImgFile.do",
+				processData : false,
+				contentType : false,
+				data : formData,
+				type : "POST",
+				success : function(res) {
+					console.log(res);
+					const imgTag = '<img class="temp-upload-img" src="' + res.externalPath + '">';
+					$('#tempUploadImgWrap').empty();
+					$('#tempUploadImgWrap').append(imgTag);
+					$('#internalImgPath').val(res.internalPath);
+					$('#externalImgPath').val(res.externalPath);
+				}
+			})
 		})
+		
+		
 	</script>
 </html>

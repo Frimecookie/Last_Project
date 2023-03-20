@@ -51,7 +51,12 @@
 						<a href="petPage.do">Pet</a>
 						<ul>
 							<li><a href="petPage.do">나의 반려동물</a></li>
-							<li><a href="petPage_regi.do">반려동물 정보 등록</a></li>
+							<c:if test="${!empty mvo}">
+								<li><a href="petPage_regi.do">반려동물 정보 등록</a></li>
+							</c:if>
+							<c:if test="${empty mvo}">
+								<li><a href="loginPage.do">반려동물 정보 등록</a></li>
+							</c:if>
 							<li><a href="petPage_correct.do">반려동물 정보 수정</a></li>
 						</ul>
 					</li>
@@ -106,36 +111,38 @@
 								<div class="content">
 
 									<!-- Content -->
-
 										<article class="box page-content" style="height: 500px;">
-
 											<header>
 												<h2>내 문의 목록</h2>
 											</header>
-											
-											<form id="questionsForm" action="${cpath}/qaPage.do" method="POST">
-												<table>
-													<tr>
-														<th>번호</th>
-														<th>제목</th>
-														<th>작성자ID</th>
-														<th>작성일</th>
-													</tr>
-													<c:forEach var="qna" items="${qnalist}">
+											<table>
+												<tr>
+													<th>번호</th>
+													<th>제목</th>
+													<th>작성자ID</th>
+													<th>작성일</th>
+												</tr>
+												<c:forEach var="qna" items="${qnalist}">
+													<form id="qnaForm" action="${cpath}/qaPage_content.do" method="GET">
+														<input type="hidden" name="QUESTIONS_NUM" value="${qna.QUESTIONS_NUM}" />
 														<tr>
 															<td>${qna.QUESTIONS_NUM-50}</td>
-															<td>${qna.QUESTIONS_TITLE}</td>
+															<td width="150"><input type="submit" value="${qna.QUESTIONS_TITLE}" style="font-size:14.6667px; background: none; color: black; font:open sans, sans-serif;"></td>
 															<td>${qna.USER_ID}</td>
-															<td><fmt:formatDate value="${qna.QUESTIONS_DATE}" pattern="yyyy/mm/dd hh:mm:ss"/></td>
+															<td><fmt:formatDate value="${qna.QUESTIONS_DATE}" pattern="yyyy-MM-dd a hh:mm"/></td>
 														</tr>
-													</c:forEach>
-												</table>
-											</form>
-											<a href="qaPage_write.do"><input type="button" style="float: right; width: 150px; height: 50px; font-size: 1em;
-											padding: 0.5em 1em; text-align: center;" value="작성하기"></a>
-											
+													</form>
+												</c:forEach>
+											</table>
+											<c:if test="${!empty mvo}">
+												<a href="qaPage_write.do"><input type="button" style="float: right; width: 150px; height: 50px; font-size: 1em;
+												padding: 0.5em 1em; text-align: center;" value="작성하기"></a>
+											</c:if>
+											<c:if test="${empty mvo}">
+												<a href="loginPage.do"><input type="button" style="float: right; width: 150px; height: 50px; font-size: 1em;
+												padding: 0.5em 1em; text-align: center;" value="작성하기"></a>
+											</c:if>
 										</article>
-										
 								</div>
 							</div>
 						</div>
@@ -145,8 +152,7 @@
 					<input type="image" src="/resources/images/top.png" onClick="javascript:window.scrollTo(0,0)" alt="맨위로" 
 							style="height: 50px; width: 50px; float: right; margin-right: 30px;"/>
 				</section>
-
-
+				
 			<!-- Footer -->
 				<footer id="footer">
 					<div class="container">

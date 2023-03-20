@@ -4,10 +4,7 @@
 
 	<!-- 문의사항 목록 -->
 	<select id="qnaList" parameterType="java.lang.String" resultType="kr.project.entity.Questions">
-		select QUESTIONS_NUM
-		,QUESTIONS_TITLE
-		,USER_ID
-		,QUESTIONS_DATE
+		select *
 		from QUESTIONS
 		where USER_ID = #{USER_ID}
 		order by QUESTIONS_NUM DESC
@@ -15,14 +12,35 @@
 	
 	<!-- 문의사항 등록 -->
 	<insert id="write" parameterType="kr.project.entity.Questions">
-		insert into Questions
+		insert into Questions(USER_ID,QUESTIONS_TITLE,QUESTIONS_CONTENT,QUESTIONS_DATE)
 		values(
-		#{QUESTIONS_NUM, jdbcType=NUMERIC}
-		,#{USER_ID, jdbcType=VARCHAR}
+		#{USER_ID, jdbcType=VARCHAR}
 		,#{QUESTIONS_TITLE, jdbcType=VARCHAR}
 		,#{QUESTIONS_CONTENT, jdbcType=VARCHAR}
 		,SYSDATE
 		)
 	</insert>
+	
+	<!-- 내 글 보기 -->
+	<select id="getQaData" parameterType="java.lang.String" resultType="kr.project.entity.Questions">
+		select *
+		from QUESTIONS
+		where QUESTIONS_NUM = #{questionsNum}
+	</select>
+	
+	<!-- 내 글 수정 -->
+	<update id="modify" parameterType="kr.project.entity.Questions">
+		update Questions
+		set QUESTIONS_TITLE = #{QUESTIONS_TITLE, jdbcType=VARCHAR}
+			,QUESTIONS_CONTENT = #{QUESTIONS_CONTENT, jdbcType=VARCHAR}
+			,QUESTIONS_DATE = #{QUESTIONS_DATE, jdbcType=DATE}
+		where QUESTIONS_NUM = #{QUESTIONS_NUM}
+	</update>
+	
+	<!-- 내 글 삭제 -->
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM QUESTIONS
+		WHERE QUESTIONS_NUM = #{questionsNum}
+	</delete>
 
 </mapper>

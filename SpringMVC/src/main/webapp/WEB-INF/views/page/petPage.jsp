@@ -116,13 +116,13 @@
 														<p>${pet.PET_NAME}</p>
 														<h3>성별</h3>
 														<c:if test="${pet.PET_GENDER=='0'}">
-															<p>암컷</p>
-														</c:if>
-														<c:if test="${pet.PET_GENDER=='1'}">
 															<p>수컷</p>
 														</c:if>
+														<c:if test="${pet.PET_GENDER=='1'}">
+															<p>암컷</p>
+														</c:if>
 														<h3>나이</h3>
-														<p>${pet.PET_AGE}</p>
+														<p>${2024 - pet.PET_AGE}살</p>
 													</c:forEach>
 												</form>
 										</article>

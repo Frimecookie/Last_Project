@@ -11,48 +11,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${cpath}/resources/css/main.css" />
 		<style>
-			/* Dropdown Button */
-			.dropbtn {
-			  background-color: #04AA6D;
-			  color: white;
-			  padding: 16px;
-			  font-size: 16px;
-			  border: none;
+			table{
+				border-collapse: collapse;
 			}
-			
-			/* The container <div> - needed to position the dropdown content */
-			.dropdown {
-			  position: relative;
-			  display: inline-block;
+			table tr, th, td{
+				border: 1px solid gray;
+				text-align: center;
+				padding: 5px;
 			}
-			
-			/* Dropdown Content (Hidden by Default) */
-			.dropdown-content {
-			  display: none;
-			  position: absolute;
-			  background-color: #f1f1f1;
-			  min-width: 160px;
-			  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			  z-index: 1;
-			}
-			
-			/* Links inside the dropdown */
-			.dropdown-content a {
-			  color: black;
-			  padding: 12px 16px;
-			  text-decoration: none;
-			  display: block;
-			}
-			
-			/* Change color of dropdown links on hover */
-			.dropdown-content a:hover {background-color: #ddd;}
-			
-			/* Show the dropdown menu on hover */
-			.dropdown:hover .dropdown-content {display: block;}
-			
-			/* Change the background color of the dropdown button when the dropdown content is shown */
-			.dropdown:hover .dropbtn {background-color: #3e8e41;}
-			</style>
+		</style>
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
@@ -88,14 +55,14 @@
 							<li><a href="petPage_correct.do">반려동물 정보 수정</a></li>
 						</ul>
 					</li>
-					<li class="current">
+					<li>
 						<a href="videoPage.do">Video</a>
 						<ul>
 							<li><a href="videoPage.do">실시간 영상</a></li>
 							<li><a href="eventPage.do">이벤트 영상</a></li>
 						</ul>
 					</li>
-					<li>
+					<li class="current">
 						<a href="qaPage.do">Q&A</a>
 						<ul>
 							<li><a href="qaPage.do">나의 문의 목록</a></li>
@@ -123,79 +90,53 @@
 
 										<!-- Recent Posts -->
 											<section>
-												<h2 class="major"><span>Video</span></h2>
+												<h2 class="major"><span>Q&A</span></h2>
 												<ul class="divided">
 													<li>
 														<article class="box post-summary">
-															<h3><a href="videoPage.do">실시간 영상</a></h3>
+															<h3><a href="qaPage.do">내 문의 목록</a></h3>
 														</article>
 													</li>
-													<li>
-														<article class="box post-summary">
-															<h3><a href="eventPage.do">이벤트 영상</a></h3>
-														</article>
-													</li>
-													<li>
-														<article class="box post-summary">
-															<div class="dropdown">
-																<button class="dropbtn">캠 선택하기</button>
-																<div class="dropdown-content">
-																  <a href="#">Cam 1</a>
-																  <a href="#">Cam 2</a>
-																  <a href="#">Cam 3</a>
-																</div>
-															  </div>
-														</article>
-													</li>
-													
-													
 												</ul>
 											</section>
 								</div>
 							</div>
 							<div class="col-9 col-12-medium imp-medium">
 								<div class="content">
-
 									<!-- Content -->
-
-										<article class="box page-content">
-
+									<article class="box page-content" style="height: 600px;">
+										<form id="qaUpdateForm" action="/qaPage_update.do" method="POST">
+											<input type="hidden" id="questionsNum" name="QUESTIONS_NUM" value="${questionsData.QUESTIONS_NUM}" >
 											<header>
-												<h2>이벤트 영상</h2>
+												<h2>수정</h2>
 											</header>
-											
-											<form>
-											<video src="/resources/videos/video.mp4" controls width="640px" height="240px" autoplay muted></video>
-											<h3>물체</h3>
-											<h3>발생시간</h3>
-											<h3>주의도</h3>
-											</form>
-											
-										</article>
-
-										<article class="box page-content">
-
-											<form>
-											<video src="/resources/videos/video.mp4" controls width="640px" height="240px" autoplay muted></video>
-											<h3>물체</h3>
-											<h3>발생시간</h3>
-											<h3>주의도</h3>
-											</form>
-											
-										</article>
-
-										<article class="box page-content">
-
-										
-											
-											<form>
-											<video src="/resources/videos/video.mp4" controls width="640px" height="240px" autoplay muted></video>
-											<h3>물체</h3>
-											<h3>발생시간</h3>
-											<h3>주의도</h3>
-											</form>
-											
-										</article>
+											<table>
+												<tr>
+													<th><label for="QUESTIONS_TITLE">제목</label></th>
+													<td>
+														<input type="text" id="questionsTitle" name="QUESTIONS_TITLE" value="${questionsData.QUESTIONS_TITLE}">
+													</td>
+												</tr>
+												<tr>
+													<th><label for="writer">작성자ID</label></th>
+													<td>
+														<input type="text" name="writer" value="${mvo.USER_ID}" readonly="readonly">
+													</td>
+												</tr>
+												<tr>
+													<th><label for="QUESTIONS_CONTENT">내용</label></th>
+													<td>
+														<textarea name="QUESTIONS_CONTENT">${questionsData.QUESTIONS_CONTENT}</textarea>
+													</td>
+												</tr>
+											</table>
+											<input type="submit" style="margin-top: 10px; position: relative; right: 160px; float: left;" value="수정완료">
+										</form>
+										<form id="qaRemoveForm" action="${cpath}/qaPage_remove.do" method="POST">
+											<input type="hidden" name="QUESTIONS_NUM" value="${questionsData.QUESTIONS_NUM}" />
+											<input type="submit" id="questionsRemoveBtn" style="margin-top: 10px; position: relative; right: 150px;" value="삭제">
+										</form>
+									</article>
 								</div>
 							</div>
 						</div>
@@ -203,10 +144,8 @@
 					<!-- <input type="button" value="맨위로" onClick="javascript:window.scrollTo(0,0)" /> -->
 					<input type="image" src="/resources/images/top.png" onClick="javascript:window.scrollTo(0,0)" alt="맨위로" 
 							style="height: 50px; width: 50px; float: right; margin-right: 30px;"/>
+		
 				</section>
-
-
-
 
 			<!-- Footer -->
 				<footer id="footer">
@@ -263,6 +202,14 @@
 			<script src="/resources/js/breakpoints.min.js"></script>
 			<script src="/resources/js/util.js"></script>
 			<script src="/resources/js/main.js"></script>
-
+		
+		
 	</body>
+	<script>
+		$('#questionsRemoveBtn').click(function() {
+			if(confirm("삭제하시겠습니까?")) {
+				document.getElementById("questionsRemoveBtn").submit();
+			}
+		})
+	</script>
 </html>

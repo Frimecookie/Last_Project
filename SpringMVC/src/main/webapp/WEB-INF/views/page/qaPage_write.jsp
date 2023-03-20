@@ -112,8 +112,10 @@
 											</header>
 											<table>
 												<tr>
-												<th>제목</th>
-												<td><input type="text" name="QUESTIONS_TITLE"></td>
+													<th><label for="QUESTIONS_TITLE">제목</label></th>
+													<td>
+														<input type="text" id="questionsTitle" name="QUESTIONS_TITLE">
+													</td>
 												</tr>
 												<tr>
 													<th><label for="writer">작성자ID</label></th>
@@ -122,7 +124,7 @@
 													</td>
 												</tr>
 												<tr>
-													<th>내용</th>
+													<th><label for="QUESTIONS_CONTENT">내용</label></th>
 													<td><textarea name="QUESTIONS_CONTENT"></textarea></td>
 												</tr>
 											</table>

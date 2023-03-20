@@ -7,19 +7,47 @@
 		select * 
 		from PETS 
 		where USER_ID = #{USER_ID}
+		order by PET_NUM ASC
 	</select>
 	
 	<!-- 애완동물 등록 -->
 	<insert id="register" parameterType="kr.project.entity.Pets">
-		insert into Pets(PET_NAME,PET_PICTURE,USER_ID,PET_CATE,PET_AGE,PET_GENDER)
+		insert into Pets(PET_NAME,PET_PICTURE,USER_ID,PET_CATE,PET_AGE,PET_GENDER,INTERNAL_IMGPATH)
 		values(
 		#{PET_NAME, jdbcType=VARCHAR}
 		,#{PET_PICTURE, jdbcType=VARCHAR}
 		,#{USER_ID, jdbcType=VARCHAR}
-		,#{PET_GENDER, jdbcType=VARCHAR}
+		,#{PET_CATE, jdbcType=NUMERIC}
 		,#{PET_AGE, jdbcType=NUMERIC}
 		,#{PET_GENDER, jdbcType=VARCHAR}
+		,#{INTERNAL_IMGPATH, jdbcType=VARCHAR}
 		)
 	</insert>
+	
+	<!-- 애완동물 정보 가져오기 -->
+	<select id="getPetData" parameterType="java.lang.String" resultType="kr.project.entity.Pets">
+		SELECT *
+		FROM PETS
+		WHERE PET_NUM = #{petNum}
+	</select>
+	
+	<!-- 애완동물 수정 -->
+	<update id="correct" parameterType="kr.project.entity.Pets">
+		update Pets
+		set PET_NAME = #{PET_NAME, jdbcType=VARCHAR}
+			,PET_AGE = #{PET_AGE, jdbcType=NUMERIC}
+			,PET_CATE = #{PET_CATE, jdbcType=NUMERIC}
+			,PET_GENDER = #{PET_GENDER, jdbcType=VARCHAR}
+			,PET_PICTURE = #{PET_PICTURE, jdbcType=VARCHAR}
+			,INTERNAL_IMGPATH = #{INTERNAL_IMGPATH, jdbcType=VARCHAR}
+		where PET_NUM = #{PET_NUM}
+	</update>
+	
+	<!-- 애완동물 삭제 -->
+	<delete id="remove" parameterType="java.lang.String">
+		DELETE FROM PETS 
+		WHERE PET_NUM = #{petNum}
+	</delete>
+	
 	
 </mapper>

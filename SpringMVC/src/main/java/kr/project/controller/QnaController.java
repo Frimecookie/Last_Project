@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.project.entity.Pets;
 import kr.project.entity.Questions;
 import kr.project.mapper.QuestionMapper;
 import kr.project.service.QuestionService;
@@ -20,20 +21,63 @@ public class QnaController {
 	@Autowired private QuestionMapper mapper;
 	@Autowired QuestionService service;
 	
+	//내 문의사항 목록 보기
 	@RequestMapping("/qaPage.do")  
 	public String qnaList(HttpServletRequest req){
+		if(SessionUtil.isNoneSession(req)) {
+			return "page/loginPage";
+		}
 		String userId = SessionUtil.getUserId(req);
+		
 		List<Questions> qnaList = mapper.qnaList(userId);
 		System.out.println(qnaList+"\n");
 		req.setAttribute("qnalist", qnaList);
+		
 		return "page/qaPage";
 	}
 	
+	//게시판 글 작성
 	@RequestMapping(value = "/qaPage_write.do", method = RequestMethod.POST)
 	public String write(HttpServletRequest req, Questions vo) {
 		String userId = SessionUtil.getUserId(req);
-		service.insertQuaData(req, userId, vo);
+		service.insertQaData(req, userId, vo);
 		
 		return "redirect:/qaPage.do";
 	}
+	
+	//게시판 상세 정보
+	@RequestMapping(value="/qaPage_content.do", method=RequestMethod.GET)
+	public String content(HttpServletRequest req, Questions vo) {
+		
+		String questionsNum = String.valueOf(vo.getQUESTIONS_NUM());
+		Questions questionsData = service.getQaData(questionsNum);
+		req.setAttribute("questionsData", questionsData);
+		
+		return "page/qaPage_content";
+	}
+	
+	//게시판 수정
+	@RequestMapping(value="/qaPage_update.do", method=RequestMethod.POST)
+	public String qaUpdate(HttpServletRequest req, Questions vo) {
+		String userId = SessionUtil.getUserId(req);
+		service.updateQaData(req, userId, vo);
+		
+		return "redirect:/qaPage_content.do";
+		
+	}
+	
+	//게시판 삭제하기
+	@RequestMapping(value="/qaPage_remove.do", method=RequestMethod.POST)
+	public String remove(HttpServletRequest req, Questions vo) {
+		String questionsNum = String.valueOf(vo.getQUESTIONS_NUM());
+		String resultMsg = "";
+		if(service.removeQnaData(questionsNum)) {
+			resultMsg = "삭제되었습니다.";
+		} else {
+			resultMsg = "실패하였습니다.\n다시 시도하여 주시기 바랍니다.";
+		}
+		req.setAttribute("resultMsg", resultMsg);
+		return "redirect:/qaPage.do";
+	}
+	
 }

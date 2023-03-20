@@ -40,7 +40,12 @@
 						<a href="petPage.do">Pet</a>
 						<ul>
 							<li><a href="petPage.do">나의 반려동물</a></li>
-							<li><a href="petPage_regi.do">반려동물 정보 등록</a></li>
+							<c:if test="${!empty mvo}">
+								<li><a href="petPage_regi.do">반려동물 정보 등록</a></li>
+							</c:if>
+							<c:if test="${empty mvo}">
+								<li><a href="loginPage.do">반려동물 정보 등록</a></li>
+							</c:if>
 							<li><a href="petPage_correct.do">반려동물 정보 수정</a></li>
 						</ul>
 					</li>
@@ -104,54 +109,42 @@
 							</div>
 							<div class="col-9 col-12-medium imp-medium">
 								<div class="content">
-
 									<!-- Content -->
-
-										<article class="box page-content" style="height: 500px; margin-bottom: 100px;">
-
+										<article class="box page-content">
 											<header>
 												<h2>반려동물 정보 수정</h2>
 											</header>
-
 											<h3>정보를 수정할 반려동물을 선택하세요</h3>
-											
-											<form>
-												<span class="image featured"><img src="/resources/images/dog01.jpg" style="width: 300px; height: 300px; border-radius: 100%; overflow: hidden; float: left; margin: 50px;" /></span>
-												<br>
-												<h3>이름</h3>
-												<p>숑이</p>
-												<h3>성별</h3>
-												<p>여자</p>
-												<h3>나이</h3>
-												<p>3세</p>
-												<a href="petPage_correct_2.do">
-													<input type="button" style="margin-top: 10px; position: relative; right: 150px;" value="수정하기"></a>
-											</form>
-												
-										</article>
-										
-										
-										<article class="box page-content">
-
-											<form>
-												<span class="image featured"><img src="/resources/images/cat01.jpg" style="width: 300px; height: 300px; border-radius: 100%; overflow: hidden; float: left; margin: 50px;" /></span>
-												<br>
-												<h3>이름</h3>
-												<p>모자썼다냥</p>
-												<h3>성별</h3>
-												<p>여자</p>
-												<h3>나이</h3>
-												<p>2세</p>
-												<a href="petPage_correct_2.do">
-													<input type="button" style="margin-top: 10px; position: relative; right: 150px;" value="수정하기"></a>
-											</form>
+												<c:forEach var="pet" items="${petlist}">
+													<form id="petsForm" action="${cpath}/petPage_correct_2.do" method="GET">
+														<input type="hidden" name="PET_NUM" value="${pet.PET_NUM}" />
+														<span class="image featured"><img src="${pet.PET_PICTURE}" style="width: 300px; height: 300px; border-radius: 100%; overflow: hidden; float: left; margin: 50px;" /></span>
+														<br>
+														<h3>이름</h3>
+														<p>${pet.PET_NAME}</p>
+														<h3>성별</h3>
+														<c:if test="${pet.PET_GENDER=='0'}">
+															<p>수컷</p>
+														</c:if>
+														<c:if test="${pet.PET_GENDER=='1'}">
+															<p>암컷</p>
+														</c:if>
+														<h3>나이</h3>
+														<p>${2024 - pet.PET_AGE}살</p>
+														<input type="submit" style="margin-top: 10px; position: relative; right: 160px; float: left;" value="수정">
+													</form>
+													<form id="petsRemoveForm" action="${cpath}/petPage_remove.do" method="POST">
+														<input type="hidden" name="PET_NUM" value="${pet.PET_NUM}" />
+														<input type="submit" id="petRemoveBtn" style="margin-top: 10px; position: relative; right: 150px;" value="삭제">
+													</form>
+												</c:forEach>
 										</article>
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- <input type="button" value="맨위로" onClick="javascript:window.scrollTo(0,0)" /> -->
-					<input type="image" src="/resources/resources/images/top.png" onClick="javascript:window.scrollTo(0,0)" alt="맨위로" 
+					<input type="image" src="/resources/images/top.png" onClick="javascript:window.scrollTo(0,0)" alt="맨위로" 
 							style="height: 50px; width: 50px; float: right; margin-right: 30px;"/>
 				</section>
 
@@ -210,6 +203,12 @@
 			<script src="/resources/js/breakpoints.min.js"></script>
 			<script src="/resources/js/util.js"></script>
 			<script src="/resources/js/main.js"></script>
-
 	</body>
+	<script>
+		$('#petRemoveBtn').click(function() {
+			if(confirm("삭제하시겠습니까?")) {
+				document.getElementById("petRemoveBtn").submit();
+			}
+		})
+	</script>
 </html>

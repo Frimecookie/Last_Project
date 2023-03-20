@@ -6,10 +6,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>DBDBDEEP</title>
+<title>Bootstrap Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="${cpath}/resources/css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="${cpath}/resources/css/main.css" />
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"> -->
 <!-- <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script> -->
@@ -47,7 +47,12 @@
 							<a href="petPage.do">Pet</a>
 							<ul>
 								<li><a href="petPage.do">나의 반려동물</a></li>
-								<li><a href="petPage_regi.do">반려동물 정보 등록</a></li>
+								<c:if test="${!empty mvo}">
+									<li><a href="petPage_regi.do">반려동물 정보 등록</a></li>
+								</c:if>
+								<c:if test="${empty mvo}">
+									<li><a href="loginPage.do">반려동물 정보 등록</a></li>
+								</c:if>
 								<li><a href="petPage_correct.do">반려동물 정보 수정</a></li>
 							</ul>
 						</li>

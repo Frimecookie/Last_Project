@@ -13,4 +13,5 @@ public class Pets {
 	private int PET_CATE; // 반려동물 구분
 	private int PET_AGE; // 반려동물 나이
 	private String PET_GENDER; // 반려동물 성별
+	private String INTERNAL_IMGPATH; // 서버에 저장된 실제 이미지 경로
 }
