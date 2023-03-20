@@ -37,19 +37,24 @@ public class VoiceController {
 	String uploadPath;
 
 	@RequestMapping("/myPage_voice.do")
-	public String voiceList(HttpServletRequest req) {
+	public String voiceList(Model model) {
 		String userId = SessionUtil.getUserId(req);
 		List<Voices> voiceList = mapper.voiceList(userId);
-		System.out.println(voiceList);
-		req.setAttribute("voiceList", voiceList);
+//		System.out.println(voiceList);
+		model.addAttribute("voiceList", voiceList);
+		System.out.println("실행되었음");
+		/*
+		 * try { Thread.sleep(1000); } catch (InterruptedException e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); }
+		 */
+		
 		return "page/myPage_voice";
 	}
 	@RequestMapping("/voicedelete.do")
-	public String voicedelete(@RequestParam("VOICE_NUM") int voice_num) {
+	public String voiceDelete(int voice_num) {
 		System.out.println(voice_num);
 		service.voicedelete(voice_num);
-		
-		return "page/myPage_voice";
+		return "redirect:/myPage_voice.do";
 		
 	}
 

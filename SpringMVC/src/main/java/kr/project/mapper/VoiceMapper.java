@@ -12,6 +12,6 @@ public interface VoiceMapper {
 	
 	public void save(Voices audioFile);
 	
-	@Delete("delete * from voices where VOICE_NUM = #{voice_num}")
+	@Delete("delete from voices where VOICE_NUM = #{voice_num}")
 	public void voicedelete(int voice_num);
 }

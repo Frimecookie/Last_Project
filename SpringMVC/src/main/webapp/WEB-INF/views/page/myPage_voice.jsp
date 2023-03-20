@@ -11,7 +11,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="/resources/css/main.css" />
+<link rel="stylesheet" href="${cpath}/resources/css/main.css" />
 <style>
 table {
 	border-collapse: collapse;
@@ -24,6 +24,7 @@ table tr, th, td {
 	vertical-align: middle;
 }
 </style>
+
 </head>
 <body class="is-preload">
 	<div id="page-wrapper">
@@ -148,8 +149,13 @@ table tr, th, td {
 													<td style="font-size: 20px;">${voice.VOICE_NUM}</td>
 													<td><audio controls>
 															<source src="${voice.FILE_PATH}" type="audio/mpeg">
-														</audio></td>
-													<td><button onclick = "location.href='${cpath}voicedelete.do?VOICE_NUM=${voice.VOICE_NUM}"">삭제하기</button></td>
+														</audio>
+													</td>
+													<td>
+													<!-- ${cpath}/voicedelete.do -->
+													<!-- onclick="location.href='addForm.html' -->
+														<button type="button" onclick="location.href='voicedelete.do?voice_num=${voice.VOICE_NUM}'">삭제하기</button>
+													</td>
 												</tr>
 											</c:forEach>
 										</table>
@@ -234,6 +240,8 @@ table tr, th, td {
 		</footer>
 
 	</div>
+	
+
 
 	<!-- Scripts -->
 	<script src="/resources/js/jquery.min.js"></script>

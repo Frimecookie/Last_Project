@@ -2470,7 +2470,7 @@ input::-moz-focus-inner {
 
 	#banner {
 		position: relative;
-		background-image: url("/resources/css/overlay.png"), url("/resources/css/overlay.png"), url("/resources/images/dogcat01.jpg");
+		background-image: url("/resources/css/overlay.png"), url("../images/resources/css/overlay.png"), url("/resources/images/dogcat01.jpg");
 		background-position: top left, top left, center center;
 		background-repeat: repeat, repeat, no-repeat;
 		background-size: auto, auto, cover;
