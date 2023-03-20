@@ -28,9 +28,9 @@
 				<ul>
 					<li><a href="home.do">Home</a></li>
 					<li>
-						<a href="myPage.do">My</a>
+						<a href="${cpath}/myPage.do?user_id=${mvo.user_id}">My</a>
 						<ul>
-							<li><a href="myPage.do">내 정보</a></li>
+							<li><a href="${cpath}/myPage.do?user_id=${mvo.user_id}">내 정보</a></li>
 							<li><a href="myPage_correct.do">회원 정보 수정</a></li>
 							<li><a href="myPage_voice.do">음성 정보</a></li>
 							<li><a href="myPage_cam.do">캠 정보</a></li>
@@ -117,24 +117,24 @@
 											<h3>정보를 수정할 반려동물을 선택하세요</h3>
 												<c:forEach var="pet" items="${petlist}">
 													<form id="petsForm" action="${cpath}/petPage_correct_2.do" method="GET">
-														<input type="hidden" name="PET_NUM" value="${pet.PET_NUM}" />
-														<span class="image featured"><img src="${pet.PET_PICTURE}" style="width: 300px; height: 300px; border-radius: 100%; overflow: hidden; float: left; margin: 50px;" /></span>
+														<input type="hidden" name="PET_NUM" value="${pet.pet_num}" />
+														<span class="image featured"><img src="${pet.pet_picture}" style="width: 300px; height: 300px; border-radius: 100%; overflow: hidden; float: left; margin: 50px;" /></span>
 														<br>
 														<h3>이름</h3>
-														<p>${pet.PET_NAME}</p>
+														<p>${pet.pet_name}</p>
 														<h3>성별</h3>
-														<c:if test="${pet.PET_GENDER=='0'}">
+														<c:if test="${pet.pet_gender=='0'}">
 															<p>수컷</p>
 														</c:if>
-														<c:if test="${pet.PET_GENDER=='1'}">
+														<c:if test="${pet.pet_gender=='1'}">
 															<p>암컷</p>
 														</c:if>
 														<h3>나이</h3>
-														<p>${2024 - pet.PET_AGE}살</p>
+														<p>${2024 - pet.pet_age}살</p>
 														<input type="submit" style="margin-top: 10px; position: relative; right: 160px; float: left;" value="수정">
 													</form>
 													<form id="petsRemoveForm" action="${cpath}/petPage_remove.do" method="POST">
-														<input type="hidden" name="PET_NUM" value="${pet.PET_NUM}" />
+														<input type="hidden" name="pet_num" value="${pet.pet_num}" />
 														<input type="submit" id="petRemoveBtn" style="margin-top: 10px; position: relative; right: 150px;" value="삭제">
 													</form>
 												</c:forEach>

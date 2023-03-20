@@ -38,6 +38,9 @@ public class VoiceController {
 
 	@RequestMapping("/myPage_voice.do")
 	public String voiceList(Model model) {
+		if(SessionUtil.isNoneSession(req)) {
+			return "page/loginPage";
+		}
 		String userId = SessionUtil.getUserId(req);
 		List<Voices> voiceList = mapper.voiceList(userId);
 //		System.out.println(voiceList);
@@ -75,8 +78,8 @@ public class VoiceController {
 		String serverPath = "http://localhost:8081/Project/resources/voice/"+file.getOriginalFilename();
 		// Save the file path to the database
 		Voices audioFile = new Voices();
-		audioFile.setFILE_PATH(serverPath);
-		audioFile.setUSER_ID(userId);
+		audioFile.setFile_path(serverPath);
+		audioFile.setUser_id(userId);
 		service.saveAudioFile(audioFile);
 
 		// Add a success message to the model

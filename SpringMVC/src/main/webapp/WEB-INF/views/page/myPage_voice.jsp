@@ -45,9 +45,9 @@ table tr, th, td {
 		<nav id="nav">
 			<ul>
 				<li><a href="home.do">Home</a></li>
-				<li class="current"><a href="myPage.do">My</a>
+				<li class="current"><a href="${cpath}/myPage.do?user_id=${mvo.user_id}">My</a>
 					<ul>
-						<li><a href="myPage.do">내 정보</a></li>
+						<li><a href="${cpath}/myPage.do?user_id=${mvo.user_id}">내 정보</a></li>
 						<li><a href="myPage_correct.do">회원 정보 수정</a></li>
 						<li><a href="myPage_voice.do">음성 정보</a></li>
 						<li><a href="myPage_cam.do">캠 정보</a></li>
@@ -93,7 +93,7 @@ table tr, th, td {
 									<li>
 										<article class="box post-summary">
 											<h3>
-												<a href="myPage.do">내 정보</a>
+												<a href="${cpath}/myPage.do?user_id=${mvo.user_id}">내 정보</a>
 											</h3>
 										</article>
 									</li>
@@ -146,9 +146,9 @@ table tr, th, td {
 										<table>
 											<c:forEach var="voice" items="${voiceList}">
 												<tr>
-													<td style="font-size: 20px;">${voice.VOICE_NUM}</td>
+													<td style="font-size: 20px;">${voice.voice_num}</td>
 													<td><audio controls>
-															<source src="${voice.FILE_PATH}" type="audio/mpeg">
+															<source src="${voice.file_path}" type="audio/mpeg">
 														</audio>
 													</td>
 													<td>

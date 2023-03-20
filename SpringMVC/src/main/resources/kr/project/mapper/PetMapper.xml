@@ -6,7 +6,7 @@
 	<select id="petList" parameterType="java.lang.String" resultType="kr.project.entity.Pets">
 		select * 
 		from PETS 
-		where USER_ID = #{USER_ID}
+		where USER_ID = #{user_id}
 		order by PET_NUM ASC
 	</select>
 	
@@ -14,12 +14,12 @@
 	<insert id="register" parameterType="kr.project.entity.Pets">
 		insert into Pets(PET_NAME,PET_PICTURE,USER_ID,PET_CATE,PET_AGE,PET_GENDER,INTERNAL_IMGPATH)
 		values(
-		#{PET_NAME, jdbcType=VARCHAR}
-		,#{PET_PICTURE, jdbcType=VARCHAR}
-		,#{USER_ID, jdbcType=VARCHAR}
-		,#{PET_CATE, jdbcType=NUMERIC}
-		,#{PET_AGE, jdbcType=NUMERIC}
-		,#{PET_GENDER, jdbcType=VARCHAR}
+		#{pet_name, jdbcType=VARCHAR}
+		,#{pet_picture, jdbcType=VARCHAR}
+		,#{user_id, jdbcType=VARCHAR}
+		,#{pet_cate, jdbcType=NUMERIC}
+		,#{pet_age, jdbcType=NUMERIC}
+		,#{pet_gender, jdbcType=VARCHAR}
 		,#{INTERNAL_IMGPATH, jdbcType=VARCHAR}
 		)
 	</insert>
@@ -28,25 +28,25 @@
 	<select id="getPetData" parameterType="java.lang.String" resultType="kr.project.entity.Pets">
 		SELECT *
 		FROM PETS
-		WHERE PET_NUM = #{petNum}
+		WHERE PET_NUM = #{pet_num}
 	</select>
 	
 	<!-- 애완동물 수정 -->
 	<update id="correct" parameterType="kr.project.entity.Pets">
 		update Pets
-		set PET_NAME = #{PET_NAME, jdbcType=VARCHAR}
-			,PET_AGE = #{PET_AGE, jdbcType=NUMERIC}
-			,PET_CATE = #{PET_CATE, jdbcType=NUMERIC}
-			,PET_GENDER = #{PET_GENDER, jdbcType=VARCHAR}
-			,PET_PICTURE = #{PET_PICTURE, jdbcType=VARCHAR}
+		set PET_NAME = #{pet_num, jdbcType=VARCHAR}
+			,PET_AGE = #{pet_age, jdbcType=NUMERIC}
+			,PET_CATE = #{pet_cate, jdbcType=NUMERIC}
+			,PET_GENDER = #{pet_gender, jdbcType=VARCHAR}
+			,PET_PICTURE = #{pet_picture, jdbcType=VARCHAR}
 			,INTERNAL_IMGPATH = #{INTERNAL_IMGPATH, jdbcType=VARCHAR}
-		where PET_NUM = #{PET_NUM}
+		where PET_NUM = #{pet_num}
 	</update>
 	
 	<!-- 애완동물 삭제 -->
 	<delete id="remove" parameterType="java.lang.String">
 		DELETE FROM PETS 
-		WHERE PET_NUM = #{petNum}
+		WHERE PET_NUM = #{pet_num}
 	</delete>
 	
 	

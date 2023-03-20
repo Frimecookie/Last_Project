@@ -5,13 +5,13 @@
   <!-- 음성 등록 -->
   <insert id="save" parameterType="kr.project.entity.Voices">
     INSERT INTO voices (USER_ID, FILE_PATH)
-    VALUES (#{USER_ID, jdbcType=VARCHAR}, #{FILE_PATH, jdbcType=VARCHAR})
+    VALUES (#{user_id, jdbcType=VARCHAR}, #{file_path, jdbcType=VARCHAR})
   </insert>
   
   <!-- 음성 목록 -->
   <select id="voiceList" parameterType="java.lang.String" resultType="kr.project.entity.Voices">
 		select * 
 		from voices 
-		where USER_ID = #{USER_ID}
+		where USER_ID = #{user_id}
   </select>
 </mapper>

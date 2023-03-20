@@ -16,19 +16,19 @@ public class PetService {
 	@Autowired PetMapper mapper;
 	
 	public void insertPetData(HttpServletRequest req, String userId, Pets vo) {
-		vo.setUSER_ID(userId);
+		vo.setUser_id(userId);
 		System.out.println(vo);
 		mapper.register(vo);
 	}
 	
 	public void updatePetData(HttpServletRequest req, String userId, Pets vo) {
-		vo.setUSER_ID(userId);
+		vo.setUser_id(userId);
 		System.out.println(vo);
 		
-		String petNum = String.valueOf(vo.getPET_NUM());
+		String pet_num = String.valueOf(vo.getPet_num());
 		// 이전 이미지를 지우는 로직 시작
 		String imgPath = vo.getINTERNAL_IMGPATH();	// 새로 들어온 이미지패스
-		String preImgPath = mapper.getCurrentImgPath(petNum);	// 기존에 있던 이미지 패스
+		String preImgPath = mapper.getCurrentImgPath(pet_num);	// 기존에 있던 이미지 패스
 		
 		// 새로 들어온 이미지패스와 기존 이미지 패스가 다르다면 기존 이미지를 삭제 한다.
 		if(!imgPath.equals(preImgPath)) {
@@ -42,12 +42,12 @@ public class PetService {
 		mapper.correct(vo);
 	}
 	
-	public Pets getPetData(String petNum) {
-		return mapper.getPetData(petNum);
+	public Pets getPetData(String pet_num) {
+		return mapper.getPetData(pet_num);
 	}
 	
-	public boolean removePetData(String petNum) {
-		String imgPath = mapper.getCurrentImgPath(petNum);
+	public boolean removePetData(String pet_num) {
+		String imgPath = mapper.getCurrentImgPath(pet_num);
 		
 		// 로직이 잘못되어 이미지파일이 null 이라면 이미지파일 체크는 그냥 패스하고 바로 데이터를 삭제한다.
 		if(null != imgPath) {
@@ -62,7 +62,7 @@ public class PetService {
 		}
 		
 		// 이미지 파일이 삭제 되었다면 데이터도 삭제한다.
-		int delCnt = mapper.remove(petNum);
+		int delCnt = mapper.remove(pet_num);
 		if(delCnt > 0) {
 			return true;
 		} else {

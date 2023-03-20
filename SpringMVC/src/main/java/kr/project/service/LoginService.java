@@ -21,6 +21,7 @@ public class LoginService {
 			session.setAttribute("userId", userId);
 			isSuccess = true;
 			System.out.println("로그인 성공");
+			System.out.println(userModel);
 		} else {
 			System.out.println("로그인 실패");
 		}

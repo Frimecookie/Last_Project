@@ -30,7 +30,7 @@ public final class SessionUtil {
 		String userId = "";
 		if(null != sessionMvo) {
 			userModel = (Users) sessionMvo;
-			userId = userModel.getUSER_ID();
+			userId = userModel.getUser_id();
 		}
 		return userId;
 	}

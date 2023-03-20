@@ -11,7 +11,7 @@ import kr.project.entity.Records;
 public interface CamMapper {
 
 	/*위험물체 카운트 */
-	public List<Records> recordsList(@Param("CAMS_NUM") int CAMS_NUM);
+	public List<Records> recordsList(@Param("cams_num") int CAMS_NUM);
 	
 	public void register(Records vo);
 

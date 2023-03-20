@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Cams {
-	private int CAMS_NUM; //카메라 고유 번
-	private String USER_ID; //유전 아이디
-	private String CAMS_URL; //경로
+	private int cams_num; //카메라 고유 번
+	private String user_id; //유전 아이디
+	private String cams_url; //경로
 }

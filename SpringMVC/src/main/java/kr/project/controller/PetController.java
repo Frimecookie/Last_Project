@@ -69,8 +69,8 @@ public class PetController {
 			return "page/loginPage";
 		}
 		
-		String petNum = String.valueOf(vo.getPET_NUM());
-		Pets petData = service.getPetData(petNum);
+		String pet_num = String.valueOf(vo.getPet_num());
+		Pets petData = service.getPetData(pet_num);
 		req.setAttribute("petData", petData);
 		return "page/petPage_correct_2";
 		
@@ -89,9 +89,9 @@ public class PetController {
 	//펫 삭제하기
 	@RequestMapping(value="/petPage_remove.do", method=RequestMethod.POST)
 	public String remove(HttpServletRequest req, Pets vo) {
-		String petNum = String.valueOf(vo.getPET_NUM());
+		String pet_num = String.valueOf(vo.getPet_num());
 		String resultMsg = "";
-		if(service.removePetData(petNum)) {
+		if(service.removePetData(pet_num)) {
 			resultMsg = "삭제되었습니다.";
 		} else {
 			resultMsg = "실패하였습니다.\n다시 시도하여 주시기 바랍니다.";

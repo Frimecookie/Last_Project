@@ -18,7 +18,7 @@ public class VoiceService {
     private VoiceMapper mapper;
     
     public void saveAudioFile(Voices audioFile) {
-    	System.out.println(audioFile.getFILE_PATH());
+    	System.out.println(audioFile.getFile_path());
 		mapper.save(audioFile);
 	}
     public void voicedelete(int voice_num) {

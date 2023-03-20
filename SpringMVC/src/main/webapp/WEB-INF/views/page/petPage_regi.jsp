@@ -29,9 +29,9 @@
 				<ul>
 					<li><a href="home.do">Home</a></li>
 					<li>
-						<a href="myPage.do">My</a>
+						<a href="${cpath}/myPage.do?user_id=${mvo.user_id}">My</a>
 						<ul>
-							<li><a href="myPage.do">내 정보</a></li>
+							<li><a href="${cpath}/myPage.do?user_id=${mvo.user_id}">내 정보</a></li>
 							<li><a href="myPage_correct.do">회원 정보 수정</a></li>
 							<li><a href="myPage_voice.do">음성 정보</a></li>
 							<li><a href="myPage_cam.do">캠 정보</a></li>
@@ -110,22 +110,22 @@
 												<h2>반려동물 정보 등록</h2>
 											</header>
 											<h3><label for="PET_NAME">반려동물 이름</label></h3>
-											<input type="text" id="petName" name="PET_NAME" maxlength="11" placeholder="이름을 입력해주세요" required>
+											<input type="text" id="petName" name="pet_name" maxlength="11" placeholder="이름을 입력해주세요" required>
 											<h3><label for="PET_AGE">반려동물 출생연도</label></h3>
-											<input type="text" id="petYob" name="PET_AGE" maxlength="4" placeholder="YYYY" pattern="\d{4}">
+											<input type="text" id="petYob" name="pet_age" maxlength="4" placeholder="YYYY" pattern="\d{4}">
 											<h3><label for="PET_CATE">반려동물 구분</label></h3>
-											<input type="radio" id="petCate" name="PET_CATE" value="0">강아지
-											<input type="radio" id="petCate" name="PET_CATE" value="1">고양이
+											<input type="radio" id="petCate" name="pet_cate" value="0">강아지
+											<input type="radio" id="petCate" name="pet_cate" value="1">고양이
 											<h3><label for="PET_GENDER">반려동물 성별</label></h3>
-											<input type="radio" id="petGender" name="PET_GENDER" value="0">수컷	
-											<input type="radio" id="petGender" name="PET_GENDER" value="1">암컷
+											<input type="radio" id="petGender" name="pet_gender" value="0">수컷	
+											<input type="radio" id="petGender" name="pet_gender" value="1">암컷
 										</article>
 										<article class="box page-content" style="height: 500px;">
 											<span class="image featured" id="tempUploadImgWrap">
-												<img class="temp-upload-img" src="/resources/images/dog01.jpg">
+												<img class="temp-upload-img" src="">
 											</span>
 											<input type="hidden" id="internalImgPath" name="INTERNAL_IMGPATH">
-											<input type="hidden" id="externalImgPath" name="PET_PICTURE">
+											<input type="hidden" id="externalImgPath" name="pet_picture">
 											<div class="filebox">
 												<input class="upload-name" id="imgFileNm" placeholder="사진파일" disabled>
 												<label for="petImg">파일찾기</label>

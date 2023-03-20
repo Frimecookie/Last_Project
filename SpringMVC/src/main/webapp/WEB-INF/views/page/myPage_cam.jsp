@@ -39,9 +39,9 @@
 				<ul>
 					<li><a href="home.do">Home</a></li>
 					<li class="current">
-						<a href="myPage.do">My</a>
+						<a href="${cpath}/myPage.do?user_id=${mvo.user_id}">My</a>
 						<ul>
-							<li><a href="myPage.do">내 정보</a></li>
+							<li><a href="${cpath}/myPage.do?user_id=${mvo.user_id}">내 정보</a></li>
 							<li><a href="myPage_correct.do">회원 정보 수정</a></li>
 							<li><a href="myPage_voice.do">음성 정보</a></li>
 							<li><a href="myPage_cam.do">캠 정보</a></li>
@@ -94,7 +94,7 @@
 												<ul class="divided">
 													<li>
 														<article class="box post-summary">
-															<h3><a href="myPage.do">내 정보</a></h3>
+															<h3><a href="${cpath}/myPage.do?user_id=${mvo.user_id}">내 정보</a></h3>
 														</article>
 													</li>
 													<li>
