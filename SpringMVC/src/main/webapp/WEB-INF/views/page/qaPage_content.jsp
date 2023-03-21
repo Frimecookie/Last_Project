@@ -114,13 +114,13 @@
                                     <tr>
                                        <th><label for="QUESTIONS_TITLE">제목</label></th>
                                        <td>
-                                          <input type="text" id="questionsTitle" name="QUESTIONS_TITLE" value="${questionsData.questions_num}" readonly="readonly">
+                                          <input type="text" id="questionsTitle" name="QUESTIONS_TITLE" value="${questionsData.questions_title}" readonly="readonly">
                                        </td>
                                     </tr>
                                     <tr>
                                        <th><label for="writer">작성자ID</label></th>
                                        <td>
-                                          <input type="text" name="writer" value="${mvo.user_id}" readonly="readonly">
+                                          <input type="text" name="writer" value="${questionsData.user_id}" readonly="readonly">
                                        </td>
                                     </tr>
                                     <tr>
@@ -137,6 +137,7 @@
                                  <input type="hidden" name="QUESTIONS_NUM" value="${questionsData.questions_num}" />
                                  <input type="submit" id="questionsRemoveBtn" style="margin-top: 10px; position: relative; right: 300px; float: right;" value="삭제">
                               </form>
+                              <input type="button" id="locationQnaList" onclick="history.back();" value="목록">
                            </article>
                         </div>
                      </div>

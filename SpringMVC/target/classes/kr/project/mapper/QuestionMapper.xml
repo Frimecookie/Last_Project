@@ -6,7 +6,11 @@
    <select id="qnaList" parameterType="java.lang.String" resultType="kr.project.entity.Questions">
       select *
       from QUESTIONS
-      where USER_ID = #{user_id}
+      <choose>
+      <when test="user_id != 'admin'">
+         where USER_ID = #{user_id}
+      </when> 
+      </choose>
       order by QUESTIONS_NUM DESC
    </select>
    
@@ -40,7 +44,7 @@
    <!-- 내 글 삭제 -->
    <delete id="remove" parameterType="java.lang.String">
       DELETE FROM QUESTIONS
-      WHERE QUESTIONS_NUM = #{questionsNum}
+      WHERE QUESTIONS_NUM = #{questions_num}
    </delete>
 
 </mapper>
