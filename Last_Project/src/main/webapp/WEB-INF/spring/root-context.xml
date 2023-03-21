@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- 여기에 DB연동 -->
+	<!-- bean은 객체를 생성하는 태그 ex) <bean id="a" class="A"/> == A a = new A(); -->
+	<!-- HikariCP API -->
+	<!-- HikariCP 객체 생성 방법 -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName"
+			value="oracle.jdbc.OracleDriver" />
+		<property name="jdbcUrl"
+			value="jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe"></property>
+		<property name="username" value="dbdb"></property>
+		<property name="password" value="dbdb"></property>
+	</bean>
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="hikariConfig" />
+	</bean>
+	<!-- mybatis-spring API -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 파일 업로드를 위한 MutipartResolver 구현체 CommonsMultipartResolver bean 등록 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600" />
+		<property name="maxUploadSizePerFile" value="104857600" />
+		<property name="maxInMemorySize" value="104857600" />
+		<property name="defaultEncoding" value="utf-8" />
+	</bean>
+
+	<!-- 파일업로드 디렉토리 설정 -->
+	<bean id="uploadPath" class="java.lang.String">
+		<constructor-arg value="[프로젝트 내 폴더, 절대경로로 설정]" />
+	</bean>
+
+
+	<mybatis-spring:scan
+		base-package="kr.project.mapper" />
+</beans>

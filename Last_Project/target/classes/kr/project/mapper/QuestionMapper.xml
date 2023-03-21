@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.project.mapper.QuestionMapper">
+
+   <!-- 문의사항 목록 -->
+   <select id="qnaList" parameterType="java.lang.String" resultType="kr.project.entity.Questions">
+      select *
+      from QUESTIONS
+      <choose>
+      <when test="user_id != 'admin'">
+         where USER_ID = #{user_id}
+      </when> 
+      </choose>
+      order by QUESTIONS_NUM DESC
+   </select>
+   
+   <!-- 문의사항 등록 -->
+   <insert id="write" parameterType="kr.project.entity.Questions">
+      insert into Questions(USER_ID,QUESTIONS_TITLE,QUESTIONS_CONTENT,QUESTIONS_DATE)
+      values(
+      #{user_id, jdbcType=VARCHAR}
+      ,#{questions_title, jdbcType=VARCHAR}
+      ,#{questions_content, jdbcType=VARCHAR}
+      ,SYSDATE
+      )
+   </insert>
+   
+   <!-- 내 글 보기 -->
+   <select id="getQaData" parameterType="java.lang.String" resultType="kr.project.entity.Questions">
+      select *
+      from QUESTIONS
+      where QUESTIONS_NUM = #{questions_num}
+   </select>
+   
+   <!-- 내 글 수정 -->
+   <update id="modify" parameterType="kr.project.entity.Questions">
+      update Questions
+      set QUESTIONS_TITLE = #{questions_title, jdbcType=VARCHAR}
+         ,QUESTIONS_CONTENT = #{questions_content, jdbcType=VARCHAR}
+         ,QUESTIONS_DATE = SYSDATE
+      where QUESTIONS_NUM = #{questions_num}
+   </update>
+   
+   <!-- 내 글 삭제 -->
+   <delete id="remove" parameterType="java.lang.String">
+      DELETE FROM QUESTIONS
+      WHERE QUESTIONS_NUM = #{questions_num}
+   </delete>
+
+</mapper>
