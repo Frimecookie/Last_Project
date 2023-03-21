@@ -19,6 +19,7 @@ public class FileUploadService {
 	private final static String SAVE_DIR = "/home/smhrd/img/mung/";
 	private final static String EXTERNAL_DIR = "/resources/mung/";
 	
+	// IMG 파일 업로드 
 	public HashMap<String, Object> uploadFile(MultipartHttpServletRequest req) {
 		HashMap<String, Object> resMap = new HashMap<String, Object>();
 		long curTimeStamp = System.currentTimeMillis();

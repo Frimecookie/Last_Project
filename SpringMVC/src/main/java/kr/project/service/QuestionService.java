@@ -15,12 +15,14 @@ public class QuestionService {
    
    @Autowired QuestionMapper mapper;
    
+   // 문의글 등록 
    public void insertQaData(HttpServletRequest req, String userId, Questions vo) {
       vo.setUser_id(userId);
       System.out.println(vo);
       mapper.write(vo);
    }
    
+   // 문의글 수정
    public void updateQaData(HttpServletRequest req, String userId, Questions vo) {
       vo.setUser_id(userId);
       System.out.println(vo);
@@ -28,10 +30,12 @@ public class QuestionService {
       mapper.modify(vo);
    }
    
+   // 문의글 불러오기 
    public Questions getQaData(String questions_num) {
       return mapper.getQaData(questions_num);
    }
    
+   // 문의글 삭제 
    public boolean removeQnaData(String questions_num) {
       
       int delCnt = mapper.remove(questions_num);

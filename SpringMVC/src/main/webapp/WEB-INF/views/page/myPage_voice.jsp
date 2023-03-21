@@ -154,7 +154,7 @@ table tr, th, td {
 													<td>
 													<!-- ${cpath}/voicedelete.do -->
 													<!-- onclick="location.href='addForm.html' -->
-														<button type="button" onclick="location.href='voicedelete.do?voice_num=${voice.VOICE_NUM}'">삭제하기</button>
+														<button type="button" onclick="location.href='voicedelete.do?voice_num=${voice.voice_num}'">삭제하기</button>
 													</td>
 												</tr>
 											</c:forEach>

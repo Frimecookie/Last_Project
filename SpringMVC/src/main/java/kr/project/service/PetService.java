@@ -15,12 +15,14 @@ public class PetService {
 	
 	@Autowired PetMapper mapper;
 	
+	// 반려동물 등록 
 	public void insertPetData(HttpServletRequest req, String userId, Pets vo) {
 		vo.setUser_id(userId);
 		System.out.println(vo);
 		mapper.register(vo);
 	}
 	
+	// 반려동물 정보 수정 
 	public void updatePetData(HttpServletRequest req, String userId, Pets vo) {
 		vo.setUser_id(userId);
 		System.out.println(vo);
@@ -42,10 +44,12 @@ public class PetService {
 		mapper.correct(vo);
 	}
 	
+	// 반려동물 정보 불러오기 
 	public Pets getPetData(String pet_num) {
 		return mapper.getPetData(pet_num);
 	}
 	
+	// 반려동물 정보 삭제 
 	public boolean removePetData(String pet_num) {
 		String imgPath = mapper.getCurrentImgPath(pet_num);
 		

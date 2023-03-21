@@ -5,7 +5,8 @@ import org.apache.ibatis.annotations.Update;
 import kr.project.entity.Users;
 
 public interface MyMapper {
-
+	
+	// 유저 정보 가져오기
 	public Users getUserInfo(String user_id);
 	
 	@Update("update users set user_pnum = #{user_pnum} where user_id = #{user_id}")

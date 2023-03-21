@@ -35,7 +35,8 @@ public class VoiceController {
 	private HttpServletRequest req;
 	@Resource(name = "uploadPath")
 	String uploadPath;
-
+	
+	// voice 리스트 불러오기
 	@RequestMapping("/myPage_voice.do")
 	public String voiceList(Model model) {
 		if(SessionUtil.isNoneSession(req)) {
@@ -53,6 +54,7 @@ public class VoiceController {
 		
 		return "page/myPage_voice";
 	}
+	// 선택 voice 삭제 
 	@RequestMapping("/voicedelete.do")
 	public String voiceDelete(int voice_num) {
 		System.out.println(voice_num);
@@ -60,7 +62,7 @@ public class VoiceController {
 		return "redirect:/myPage_voice.do";
 		
 	}
-
+	// 음성파일 업로드 
 	@RequestMapping("/uploadFile.do")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file, HttpServletRequest req, Model model) {
 		// Save the file to disk
@@ -75,7 +77,7 @@ public class VoiceController {
 			// Handle the exception
 			e.printStackTrace();
 		}
-		String serverPath = "http://localhost:8081/Project/resources/voice/"+file.getOriginalFilename();
+		String serverPath = "http://localhost:8081/resources/voice/"+file.getOriginalFilename();
 		// Save the file path to the database
 		Voices audioFile = new Voices();
 		audioFile.setFile_path(serverPath);

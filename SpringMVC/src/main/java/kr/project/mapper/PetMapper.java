@@ -9,17 +9,22 @@ import kr.project.entity.Pets;
 
 public interface PetMapper {
 
-	/* 동물 목록*/
+	/* 사용자가 등록한 동물 정보 */
 	public List<Pets> petList(@Param("user_id") String userId);
 	
+	// 동물 정보 
 	public Pets getPetData(@Param("pet_num") String pet_num);
 	
+	// 동물 업로드 이미지 가져오기 
 	@Select("SELECT INTERNAL_IMGPATH FROM PETS WHERE PET_NUM = #{pet_num}")
 	public String getCurrentImgPath(@Param("pet_num") String pet_num);
 	
-	public void register(Pets vo); //등록하기
+	// 등록하기
+	public void register(Pets vo); 
 	
-	public void correct(Pets vo); //수정하기
+	// 수정하기
+	public void correct(Pets vo); 
 	
+	// 동물정보 삭제 
 	public int remove(@Param("pet_num") String pet_num);
 }

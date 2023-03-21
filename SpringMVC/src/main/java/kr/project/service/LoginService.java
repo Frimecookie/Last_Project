@@ -13,6 +13,7 @@ public class LoginService {
 
 	@Autowired LoginMapper mapper;
 	
+	// 로그인 및 성공여부
 	public boolean getLoginSession(String userId, String userPw, HttpSession session) {
 		boolean isSuccess = false;
 		Users userModel = mapper.loginCheck(userId, userPw);

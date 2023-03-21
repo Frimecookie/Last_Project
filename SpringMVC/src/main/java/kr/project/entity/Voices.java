@@ -7,10 +7,9 @@ import oracle.sql.TIMESTAMP;
 @Data
 @ToString
 public class Voices {
-	private String user_id;
-	private int voice_num;
-    private String file_path;
-    private TIMESTAMP created_at;
-	// 생성자, getter, setter 생략
+	private String user_id; //사용자 id
+	private int voice_num; // 음성파일 번호
+    private String file_path; // 음성파일 경로 
+    private TIMESTAMP created_at; // 생성시간 
 	
 }

@@ -8,12 +8,13 @@ import org.json.simple.parser.ParseException;
 
 public final class StringUtil {
 
-	/**
-	 * Referer URL에서 Page경로만 떼서 반환한다.
-	 * ex) input => http://localhost:8080/home.do, return => home.do
-	 * @param referer
-	 * @return String
-	 */
+	   /**
+	    * 이전 페이지의 URL에서 페이지 이름을 추출하여 반환
+	    * 이전 페이지의 URL이 유효하지 않으면 기본 페이지 이름을 반환
+	    * Referer URL에서 Page경로만 떼서 반환한다.
+	    * ex) input => http://localhost:8080/home.do, return => home.do
+	    */
+
 	public static String getBeforePage(String referer) {
 		String domain = referer.split("://")[1];
 		String pageNm = "";
