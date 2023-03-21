@@ -116,7 +116,7 @@
 									<c:forEach var="qna" items="${qnalist}">
 										<form id="qnaForm" action="${cpath}/qaPage_content.do"
 											method="GET">
-											<input type="hidden" name="QUESTIONS_NUM"
+											<input type="hidden" name="questions_num"
 												value="${qna.questions_num}" />
 											<tr>
 												<td>${qna.questions_num}</td>

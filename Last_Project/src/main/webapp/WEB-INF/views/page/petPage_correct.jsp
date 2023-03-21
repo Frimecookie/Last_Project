@@ -123,7 +123,7 @@
 									<form id="petsForm" action="${cpath}/petPage_correct_2.do"
 										method="GET">
 										<div class="petPic">
-											<input type="hidden" name="PET_NUM" value="${pet.pet_num}" />
+											<input type="hidden" name="pet_num" value="${pet.pet_num}" />
 											<span class="image featured"><img
 												src="${pet.pet_picture}" /></span>
 										</div>
@@ -140,81 +140,80 @@
 											<h3>나이</h3>
 											<p>${2024 - pet.pet_age}살</p>
 											<input type="submit" id="pet_correct" value="수정">
-											<form id="petsRemoveForm" action="${cpath}/petPage_remove.do"
-												method="POST">
-												<input type="hidden" name="pet_num" value="${pet.pet_num}" />
-												<input type="submit" id="petRemoveBtn" value="삭제">
-											</form>
-										</div>
 									</form>
-
-								</c:forEach>
-							</article>
+									<form id="petsRemoveForm" action="${cpath}/petPage_remove.do"
+										method="POST">
+										<input type="hidden" name="pet_num" value="${pet.pet_num}" />
+										<input type="submit" id="petRemoveBtn" value="삭제">
+									</form>
 						</div>
+						</c:forEach>
+						</article>
 					</div>
 				</div>
 			</div>
-			<!-- <input type="button" value="맨위로" onClick="javascript:window.scrollTo(0,0)" /> -->
-			<div id="goTop">
-				<input type="image" src="../../resources/images/goTop.jpg"
-					onClick="javascript:window.scrollTo(0,0)" alt="맨위로" />
-			</div>
-		</section>
+	</div>
+	<!-- <input type="button" value="맨위로" onClick="javascript:window.scrollTo(0,0)" /> -->
+	<div id="goTop">
+		<input type="image" src="../../resources/images/goTop.jpg"
+			onClick="javascript:window.scrollTo(0,0)" alt="맨위로" />
+	</div>
+	</section>
 
-		<!-- Footer -->
-		<footer id="footer">
-			<div class="container">
-				<div class="row gtr-200">
-					<div class="col-12">
-						<!-- About -->
-						<section>
-							<h2 class="major">
-								<span>멍하냥의 새 소식과 공지를 뉴스레터로 받아보세요</span>
-							</h2>
-							<div class="info">
-								<div id="info__id">
-									<input type="text" placeholder="이메일을 입력해주세요" />
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="container">
+			<div class="row gtr-200">
+				<div class="col-12">
+					<!-- About -->
+					<section>
+						<h2 class="major">
+							<span>멍하냥의 새 소식과 공지를 뉴스레터로 받아보세요</span>
+						</h2>
+						<div class="info">
+							<div id="info__id">
+								<input type="text" placeholder="이메일을 입력해주세요" />
 
-									<button>구독하기</button>
-								</div>
+								<button>구독하기</button>
 							</div>
-						</section>
-					</div>
-
-					<div class="col-12">
-
-						<!-- Contact -->
-						<section>
-							<h2 class="major">
-								<span>Get in touch</span>
-							</h2>
-							<ul class="contact">
-								<li><a class="icon brands fa-facebook" href="#"><span
-										class="label">Facebook</span></a></li>
-								<li><a class="icon brands fa-twitter" href="#"><span
-										class="label">Twitter</span></a></li>
-								<li><a class="icon brands fa-instagram" href="#"><span
-										class="label">Instagram</span></a></li>
-								<li><a class="icon brands fa-dribbble" href="#"><span
-										class="label">Dribbble</span></a></li>
-								<li><a class="icon brands fa-linkedin" href="#"><span
-										class="label">LinkedIn</span></a></li>
-							</ul>
-						</section>
-
-					</div>
+						</div>
+					</section>
 				</div>
 
-				<!-- Copyright -->
-				<div id="copyright">
-					<ul class="menu">
-						<li>&copy; 2023 멍하냥 All Rights Reserved</li>
-						<li>Team: <a href="#">dbdbDeep</a></li>
-					</ul>
-				</div>
+				<div class="col-12">
 
+					<!-- Contact -->
+					<section>
+						<h2 class="major">
+							<span>Get in touch</span>
+						</h2>
+						<ul class="contact">
+							<li><a class="icon brands fa-facebook" href="#"><span
+									class="label">Facebook</span></a></li>
+							<li><a class="icon brands fa-twitter" href="#"><span
+									class="label">Twitter</span></a></li>
+							<li><a class="icon brands fa-instagram" href="#"><span
+									class="label">Instagram</span></a></li>
+							<li><a class="icon brands fa-dribbble" href="#"><span
+									class="label">Dribbble</span></a></li>
+							<li><a class="icon brands fa-linkedin" href="#"><span
+									class="label">LinkedIn</span></a></li>
+						</ul>
+					</section>
+
+				</div>
 			</div>
-		</footer>
+
+			<!-- Copyright -->
+			<div id="copyright">
+				<ul class="menu">
+					<li>&copy; 2023 멍하냥 All Rights Reserved</li>
+					<li>Team: <a href="#">dbdbDeep</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</footer>
 
 	</div>
 

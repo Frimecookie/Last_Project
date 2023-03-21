@@ -94,16 +94,16 @@
 							<article class="box page-content" style="height: 600px;">
 								<form id="qaUpdateForm" action="${cpath}/qaPage_update.do"
 									method="POST">
-									<input type="hidden" id="questionsNum" name="QUESTIONS_NUM"
+									<input type="hidden" id="questions_num" name="questions_num"
 										value="${questions_num}">
 									<header>
 										<h2>수정하기</h2>
 									</header>
 									<table id="qaTable_write">
 										<tr>
-											<th><label for="QUESTIONS_TITLE">제목</label></th>
-											<td><input type="text" id="questionsTitle"
-												name="QUESTIONS_TITLE" value="${questions_title}" /></td>
+											<th><label for="questions_title">제목</label></th>
+											<td><input type="text" id="questions_title"
+												name="questions_title" value="${questions_title}" /></td>
 										</tr>
 										<tr>
 											<th><label for="writer">작성자ID</label></th>
@@ -111,8 +111,8 @@
 												value="${mvo.user_id}" readonly="readonly"></td>
 										</tr>
 										<tr>
-											<th><label for="QUESTIONS_CONTENT">내용</label></th>
-											<td><textarea name="QUESTIONS_CONTENT">${questions_content}</textarea>
+											<th><label for="questions_content">내용</label></th>
+											<td><textarea name="questions_content">${questions_content}</textarea>
 											</td>
 										</tr>
 									</table>

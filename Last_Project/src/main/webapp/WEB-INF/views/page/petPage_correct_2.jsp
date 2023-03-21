@@ -109,51 +109,51 @@
 					<div class="col-9 col-12-medium imp-medium">
 						<div class="content">
 							<!-- Content -->
-							<form id="correctForm" action="/petPage_correct_2_update.do"
-								method="post">
-								<input type="hidden" id="petNum" name="PET_NUM"
+							<form id="correctForm" action="/petPage_correct_2_update1.do"
+								method="GET">
+								<input type="hidden" id="petNum" name="pet_num"
 									value="${petData.pet_num}">
 								<article class="box page-content" style="height: 500px;">
 									<header>
 										<h2>반려동물 정보 수정</h2>
 									</header>
 									<h3>
-										<label for="PET_NAME">반려동물 이름</label>
+										<label for="pet_name">반려동물 이름</label>
 									</h3>
-									<input type="text" id="petName" name="PET_NAME"
+									<input type="text" id="petName" name="pet_name"
 										value="${petData.pet_name}" maxlength="11"
 										placeholder="이름을 입력해주세요" required>
 									<h3>
-										<label for="PET_AGE">반려동물 출생연도</label>
+										<label for="pet_age">반려동물 출생연도</label>
 									</h3>
-									<input type="text" id="petYob" name="PET_AGE"
+									<input type="text" id="petYob" name="pet_age"
 										value="${petData.pet_age}" maxlength="4" placeholder="YYYY"
 										pattern="\d{4}">
 									<h3>
-										<label for="PET_CATE">반려동물 구분</label>
+										<label for="pet_cate">반려동물 구분</label>
 									</h3>
 									<c:if test="${petData.pet_cate==0}">
-										<input type="radio" id="petCate" name="PET_CATE" value="0"
+										<input type="radio" id="petCate" name="pet_cate" value="0"
 											checked />강아지
-												<input type="radio" id="petCate" name="PET_CATE" value="1" />고양이
+												<input type="radio" id="petCate" name="pet_cate" value="1" />고양이
 											</c:if>
 									<c:if test="${petData.pet_cate==1}">
-										<input type="radio" id="petCate" name="PET_CATE" value="0" />강아지
-												<input type="radio" id="petCate" name="PET_CATE" value="1"
+										<input type="radio" id="petCate" name="pet_cate" value="0" />강아지
+												<input type="radio" id="petCate" name="pet_cate" value="1"
 											checked />고양이
 											</c:if>
 									<h3>
-										<label for="PET_GENDER">반려동물 성별</label>
+										<label for="pet_gender">반려동물 성별</label>
 									</h3>
 									<c:if test="${petData.pet_gender==0}">
-										<input type="radio" id="petGender" name="PET_GENDER" value="0"
+										<input type="radio" id="petGender" name="pet_gender" value="0"
 											checked />수컷
-												<input type="radio" id="petGender" name="PET_GENDER"
+												<input type="radio" id="petGender" name="pet_gender"
 											value="1" />암컷
 											</c:if>
 									<c:if test="${petData.pet_gender==1}">
-										<input type="radio" id="petGender" name="PET_GENDER" value="0" />수컷
-												<input type="radio" id="petGender" name="PET_GENDER"
+										<input type="radio" id="petGender" name="pet_gender" value="0" />수컷
+												<input type="radio" id="petGender" name="pet_gender"
 											value="1" checked />암컷
 											</c:if>
 								</article>
@@ -164,7 +164,7 @@
 										style="margin: 0 auto;">
 									</span> <input type="hidden" id="internalImgPath"
 										name="INTERNAL_IMGPATH" value="${petData.INTERNAL_IMGPATH}">
-									<input type="hidden" id="externalImgPath" name="PET_PICTURE"
+									<input type="hidden" id="externalImgPath" name="pet_picture"
 										value="${petData.pet_picture}"><br>
 
 									<div class="filebox">

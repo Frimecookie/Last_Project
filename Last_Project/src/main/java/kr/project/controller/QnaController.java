@@ -50,7 +50,7 @@ public class QnaController {
       if (SessionUtil.isNoneSession(req)) {
          return "page/loginPage";
       }
-      String questions_num = (String) req.getParameter("QUESTIONS_NUM");
+      String questions_num = (String) req.getParameter("questions_num");
       Questions questionsData = service.getQaData(questions_num);
       req.setAttribute("questionsData", questionsData);
 
@@ -63,9 +63,9 @@ public class QnaController {
       if (SessionUtil.isNoneSession(req)) {
          return "page/loginPage";
       }
-      int questions_num = Integer.parseInt(req.getParameter("QUESTIONS_NUM"));
-      String questions_title = (String) (req.getParameter("QUESTIONS_TITLE"));
-      String questions_content = (String) (req.getParameter("QUESTIONS_CONTENT"));
+      int questions_num = Integer.parseInt(req.getParameter("questions_num"));
+      String questions_title = (String) (req.getParameter("questions_title"));
+      String questions_content = (String) (req.getParameter("questions_content"));
 
       req.setAttribute("questions_num", questions_num);
       req.setAttribute("questions_title", questions_title);

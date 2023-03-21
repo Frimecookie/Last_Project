@@ -69,17 +69,22 @@ public class PetController {
 			return "page/loginPage";
 		}
 		
+		System.out.println("vo임"+vo);
 		String pet_num = String.valueOf(vo.getPet_num());
+//		int pet_num = vo.getPet_num();
 		Pets petData = service.getPetData(pet_num);
 		req.setAttribute("petData", petData);
+		System.out.println("!!!!"+petData);
 		return "page/petPage_correct_2";
 		
 	}
 	
 	//수정 후 펫 정보 보내기
-	@RequestMapping(value="/petPage_correct_2_update.do", method=RequestMethod.POST)
+	@RequestMapping(value="/petPage_correct_2_update1.do", method=RequestMethod.GET)
 	public String correctPost(HttpServletRequest req, Pets vo) {
 		String userId = SessionUtil.getUserId(req);
+		System.out.println(vo.toString());
+		req.setAttribute("vo", vo);
 		service.updatePetData(req, userId, vo);
 		
 		return "redirect:/petPage_correct.do";

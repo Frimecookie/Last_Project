@@ -64,7 +64,7 @@ public class VoiceController {
 	@RequestMapping("/uploadFile.do")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file, HttpServletRequest req, Model model) {
 		// Save the file to disk
-		Path filePath = Paths.get("C:\\Users\\smhrd\\git\\Last_project\\SpringMVC\\src\\main\\webapp\\resources\\voice", file.getOriginalFilename());
+		Path filePath = Paths.get("C:\\Users\\smhrd\\git\\Last_project\\Last_project\\src\\main\\webapp\\resources\\voice", file.getOriginalFilename());
 		
 		String userId = SessionUtil.getUserId(req);
 		try {
@@ -75,7 +75,7 @@ public class VoiceController {
 			// Handle the exception
 			e.printStackTrace();
 		}
-		String serverPath = "http://localhost:8081/Project/resources/voice/"+file.getOriginalFilename();
+		String serverPath = "http://localhost:8081/resources/voice/"+file.getOriginalFilename();
 		// Save the file path to the database
 		Voices audioFile = new Voices();
 		audioFile.setFile_path(serverPath);

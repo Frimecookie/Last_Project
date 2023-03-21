@@ -90,15 +90,15 @@
 						<!-- Highlight -->
 						<section class="box highlight">
 							<ul class="special">
-								<li><a href="petPage.html" class="icon solid fa-cat"><span
+								<li><a href="petPage.do" class="icon solid fa-cat"><span
 										class="label">Cat</span></a></li>
-								<li><a href="videoPage.html" class="icon solid fa-video"><span
+								<li><a href="videoPage.do" class="icon solid fa-video"><span
 										class="label">Video</span></a></li>
-								<li><a href="eventPage.html" class="icon solid fa-search"><span
+								<li><a href="eventPage.do" class="icon solid fa-search"><span
 										class="label">Search</span></a></li>
-								<li><a href="eventPage.html"
+								<li><a href="eventPage.do"
 									class="icon solid fa-chart-bar"><span class="label">Chart</span></a></li>
-								<li><a href="myPage.html" class="icon solid fa-tablet-alt"><span
+								<li><a href="myPage.do" class="icon solid fa-tablet-alt"><span
 										class="label">Tablet</span></a></li>
 							</ul>
 							<header>

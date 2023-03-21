@@ -34,7 +34,7 @@
 	<!-- 애완동물 수정 -->
 	<update id="correct" parameterType="kr.project.entity.Pets">
 		update Pets
-		set PET_NAME = #{pet_num, jdbcType=VARCHAR}
+		set PET_NAME = #{pet_name, jdbcType=VARCHAR}
 			,PET_AGE = #{pet_age, jdbcType=NUMERIC}
 			,PET_CATE = #{pet_cate, jdbcType=NUMERIC}
 			,PET_GENDER = #{pet_gender, jdbcType=VARCHAR}

@@ -101,7 +101,7 @@
 									</header>
 									<table id="qaTable_write">
 										<tr>
-											<th><label for="QUESTIONS_TITLE">제목</label></th>
+											<th><label for="questions_title">제목</label></th>
 											<td><input type="text" id="questionsTitle"
 												name="questions_title"
 												value="${questionsData.questions_title}" readonly="readonly">
@@ -113,7 +113,7 @@
 												value="${mvo.user_id}" readonly="readonly"></td>
 										</tr>
 										<tr>
-											<th><label for="QUESTIONS_CONTENT">내용</label></th>
+											<th><label for="questions_content">내용</label></th>
 											<td><textarea name="questions_content"
 													readonly="readonly">${questionsData.questions_content}</textarea>
 											</td>

@@ -23,8 +23,9 @@ public class PetService {
 	
 	public void updatePetData(HttpServletRequest req, String userId, Pets vo) {
 		vo.setUser_id(userId);
-		System.out.println(vo);
-		
+		System.out.println("vo : "+vo);
+		Pets pvo = (Pets) req.getAttribute("vo");
+		System.out.println("pvo : "+pvo.toString());
 		String pet_num = String.valueOf(vo.getPet_num());
 		// 이전 이미지를 지우는 로직 시작
 		String imgPath = vo.getINTERNAL_IMGPATH();	// 새로 들어온 이미지패스
