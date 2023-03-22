@@ -144,7 +144,7 @@
 									<form id="petsRemoveForm" action="${cpath}/petPage_remove.do"
 										method="POST">
 										<input type="hidden" name="pet_num" value="${pet.pet_num}" />
-										<input type="submit" id="petRemoveBtn" value="삭제">
+										<input type="submit" id="petRemoveBtn" style="margin-top: 1em;" value="삭제">
 									</form>
 						</div>
 						</c:forEach>
