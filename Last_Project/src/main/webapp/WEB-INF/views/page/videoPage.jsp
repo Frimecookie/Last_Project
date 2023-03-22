@@ -56,6 +56,21 @@
 .dropdown:hover .dropbtn {
 	background-color: #9bb2e5;
 }
+
+#videoContainer {
+	width: 100%; /* div 요소의 너비를 100%로 설정 */
+	height: 0; /* div 요소의 높이를 0으로 설정 */
+	padding-bottom: 56.25%; /* div 요소의 높이를 비디오 화면의 가로-세로 비율에 맞춰 설정 */
+	position: relative; /* div 요소를 상대적인 위치로 설정 */
+}
+
+#videoIframe {
+	position: absolute; /* iframe 요소를 절대적인 위치로 설정 */
+	top: 0; /* iframe 요소의 상단 위치를 0으로 설정 */
+	left: 0; /* iframe 요소의 왼쪽 위치를 0으로 설정 */
+	width: 100%; /* iframe 요소의 너비를 100%로 설정 */
+	height: 100%; /* iframe 요소의 높이를 100%로 설정 */
+}
 </style>
 
 </head>
@@ -166,9 +181,9 @@
 								<header>
 									<h2>실시간 영상</h2>
 								</header>
-								<div style="width: 700px; height: 500px;">
-									<iframe width="100%" height="100%"
-										src="http://127.0.0.1:5500/getimg.html"></iframe>
+								<div id="videoContainer">
+									<iframe id="videoIframe"
+										src="http://127.0.0.1:5500/getimg.html" allow="autoplay"></iframe>
 								</div>
 							</article>
 						</div>

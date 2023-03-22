@@ -2355,7 +2355,8 @@ table.default thead {
 
 	/* 내정보 오른쪽 박스 조절할 때 */
 	/* border: 2px solid red; */
-	padding: 20px;
+	padding: 10px;
+	/* width: 1000px; */
 	/* height: 600px; */
 }
 
