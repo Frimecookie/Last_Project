@@ -92,7 +92,7 @@ table tr, th, td {
 					<ul>
 						<li><a href="${cpath}/myPage.do?user_id=${mvo.user_id}">내
 								정보</a></li>
-						<li><a href="myPage_correct.do">회원 정보 수정</a></li>
+						
 						<li><a href="myPage_voice.do">음성 정보</a></li>
 
 					</ul></li>
